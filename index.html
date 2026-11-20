@@ -1,195 +1,449 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thiago Bauer · Location Support Specialist</title>
-<meta name="description" content="Thiago Bauer: IT site and field support specialist with 16+ years in desktop support, warehouse tech, networking and Microsoft 365.">
+<meta name="description" content="Thiago Bauer: Location Support Specialist at H&M with 20+ years in IT support, field tech, networking and Microsoft 365.">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Thiago Bauer · Location Support Specialist">
+<meta property="og:description" content="IT support, field tech and Microsoft 365 builder. Medford, NJ.">
+<meta property="og:url" content="https://thiagopanda.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  @property --a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
   :root {
-    --bg: #f5f6f8; --card: #ffffff; --text: #1d2330; --muted: #5d6677;
-    --accent: #0b6bcb; --accent-soft: #e6f0fb; --line: #e3e6ec;
+    --bg: #07080d; --bg2: #0d1018; --text: #eef1f7; --muted: #a3acbd; --faint: #6b7385;
+    --glass: rgba(255,255,255,.045); --glass-strong: rgba(255,255,255,.08);
+    --border: rgba(255,255,255,.09);
+    --c1: #6d5dfc; --c2: #22d3ee; --c3: #f472b6; --c4: #a3e635;
+    --accent: #8b7dff; --shadow: 0 20px 60px -20px rgba(0,0,0,.6);
+    --radius: 20px;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0f1218; --card: #171b23; --text: #e6e9ef; --muted: #9aa3b2;
-      --accent: #5aa9f5; --accent-soft: #1b2a3c; --line: #262c37;
-    }
+  :root[data-theme="light"] {
+    --bg: #f4f5fb; --bg2: #ffffff; --text: #141826; --muted: #4a5266; --faint: #7a8296;
+    --glass: rgba(255,255,255,.65); --glass-strong: rgba(255,255,255,.85);
+    --border: rgba(20,24,38,.09);
+    --accent: #5b4cf0; --shadow: 0 20px 50px -25px rgba(40,40,90,.35);
   }
-  :root[data-theme="dark"] {
-    --bg: #0f1218; --card: #171b23; --text: #e6e9ef; --muted: #9aa3b2;
-    --accent: #5aa9f5; --accent-soft: #1b2a3c; --line: #262c37;
-  }
+
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text);
-    font: 15px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
-  .page { max-width: 960px; margin: 32px auto; background: var(--card);
-    border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
-    display: grid; grid-template-columns: 290px 1fr; }
-  aside { background: var(--accent-soft); padding: 32px 26px; }
-  main { padding: 32px 36px; }
-  h1 { font-size: 30px; line-height: 1.15; margin: 0 0 6px; letter-spacing: -0.02em; }
-  .role { color: var(--accent); font-weight: 600; margin: 0 0 22px; }
-  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .12em;
-    color: var(--muted); margin: 26px 0 10px; font-weight: 600; }
-  aside h2:first-of-type { margin-top: 0; }
-  main h2:first-child { margin-top: 0; }
-  ul { margin: 0; padding-left: 18px; }
-  li { margin: 3px 0; }
-  .plain { list-style: none; padding: 0; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tags span { background: var(--card); border: 1px solid var(--line);
-    border-radius: 999px; padding: 2px 10px; font-size: 13px; }
-  .job { padding: 14px 0; border-top: 1px solid var(--line); }
-  .job:first-of-type { border-top: 0; padding-top: 0; }
-  .job-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  .job h3 { margin: 0; font-size: 16px; }
-  .when { color: var(--muted); font-size: 13px; white-space: nowrap; }
-  .where { color: var(--muted); font-size: 14px; margin: 2px 0 6px; }
-  .edu p { margin: 0 0 10px; }
-  .edu small { color: var(--muted); }
-  .stat { font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; }
-  @media (max-width: 760px) {
-    .page { grid-template-columns: 1fr; margin: 0; border-radius: 0; border: 0; }
-    aside, main { padding: 24px 16px; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 17px/1.7 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  ::selection { background: var(--c1); color: #fff; }
+
+  .aurora { position: fixed; inset: -20vmax; z-index: -2; pointer-events: none;
+    background:
+      radial-gradient(40vmax 40vmax at 15% 20%, color-mix(in oklab, var(--c1) 55%, transparent), transparent 60%),
+      radial-gradient(35vmax 35vmax at 85% 15%, color-mix(in oklab, var(--c2) 40%, transparent), transparent 60%),
+      radial-gradient(40vmax 40vmax at 70% 85%, color-mix(in oklab, var(--c3) 35%, transparent), transparent 60%);
+    filter: blur(40px) saturate(120%); opacity: .55; animation: drift 22s ease-in-out infinite alternate; }
+  :root[data-theme="light"] .aurora { opacity: .35; }
+  @keyframes drift { to { transform: translate3d(3vmax,-2vmax,0) rotate(8deg) scale(1.08); } }
+  .grid-bg { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 56px 56px; mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at 50% 0%, #000 20%, transparent 70%); }
+
+  .progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 50;
+    background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3)); transform-origin: 0 50%; transform: scaleX(0); }
+  @supports (animation-timeline: scroll()) {
+    .progress { animation: grow linear both; animation-timeline: scroll(root); }
+    @keyframes grow { to { transform: scaleX(1); } }
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  nav { position: sticky; top: 14px; z-index: 40; margin: 14px auto 0; width: fit-content;
+    display: flex; gap: 4px; align-items: center; padding: 6px; border-radius: 999px;
+    background: var(--glass-strong); border: 1px solid var(--border);
+    backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); box-shadow: var(--shadow); }
+  nav a, nav button { font: 500 14px/1 Inter, sans-serif; color: var(--muted); text-decoration: none;
+    padding: 9px 14px; border-radius: 999px; border: 0; background: none; cursor: pointer; transition: .2s; }
+  nav a:hover, nav button:hover { color: var(--text); background: var(--glass); }
+
+  header.hero { padding: 90px 0 50px; text-align: center; }
+  .avatar { width: 112px; height: 112px; margin: 0 auto 26px; border-radius: 50%; position: relative; isolation: isolate;
+    display: grid; place-items: center; font: 700 38px "Space Grotesk", sans-serif; color: #fff;
+    background: linear-gradient(135deg, var(--c1), var(--c2)); box-shadow: 0 0 60px -10px var(--c1); }
+  .avatar::before { content: ""; position: absolute; inset: -5px; border-radius: 50%; z-index: -1;
+    background: conic-gradient(from var(--a), var(--c1), var(--c2), var(--c3), var(--c4), var(--c1));
+    animation: spin 6s linear infinite; }
+  @keyframes spin { to { --a: 360deg; } }
+  .status { display: inline-flex; gap: 8px; align-items: center; font: 500 13px "JetBrains Mono", monospace;
+    color: var(--muted); padding: 6px 14px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border); margin-bottom: 22px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c4); box-shadow: 0 0 0 0 var(--c4); animation: pulse 2s infinite; }
+  @keyframes pulse { 70% { box-shadow: 0 0 0 9px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+  h1 { font: 700 clamp(44px, 8vw, 84px)/1 "Space Grotesk", sans-serif; letter-spacing: -0.035em; margin: 0 0 18px;
+    background: linear-gradient(100deg, var(--text) 20%, var(--c2) 45%, var(--c3) 60%, var(--text) 85%);
+    background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shine 7s ease-in-out infinite; }
+  @keyframes shine { 0%,100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+  .tagline { font-size: clamp(18px, 2.4vw, 22px); color: var(--muted); margin: 0 auto; max-width: 640px; }
+  .tagline b { color: var(--text); font-weight: 600; }
+  .typed { font-family: "JetBrains Mono", monospace; color: var(--c2); }
+  .typed::after { content: "▍"; animation: blink 1s steps(1) infinite; color: var(--c3); }
+  @keyframes blink { 50% { opacity: 0; } }
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 14px;
+    font: 600 15px Inter, sans-serif; color: var(--text); text-decoration: none; cursor: pointer;
+    background: var(--glass-strong); border: 1px solid var(--border); transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .btn:hover { transform: translateY(-2px); border-color: color-mix(in oklab, var(--accent) 60%, transparent); box-shadow: 0 10px 30px -10px var(--accent); }
+  .btn.primary { background: linear-gradient(135deg, var(--c1), color-mix(in oklab, var(--c1) 60%, var(--c2))); color: #fff; border-color: transparent; }
+  .btn svg { width: 18px; height: 18px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 30px 0 10px; }
+  .stat { text-align: center; padding: 22px 12px; }
+  .stat .n { font: 700 38px/1 "Space Grotesk", sans-serif;
+    background: linear-gradient(135deg, var(--c2), var(--c1)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .stat .l { color: var(--muted); font-size: 14px; margin-top: 6px; }
+
+  .card { position: relative; background: var(--glass); border: 1px solid var(--border); border-radius: var(--radius);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: var(--shadow); }
+  .card::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--accent) 18%, transparent), transparent 60%); }
+  .card:hover::before { opacity: 1; }
+
+  section { padding: 56px 0 10px; scroll-margin-top: 70px; }
+  .eyebrow { font: 500 13px "JetBrains Mono", monospace; color: var(--c2); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 8px; }
+  h2 { font: 700 clamp(28px, 4vw, 38px)/1.15 "Space Grotesk", sans-serif; letter-spacing: -0.02em; margin: 0 0 28px; }
+
+  .about { padding: 30px 34px; font-size: 18px; }
+  .about p { margin: 0 0 14px; max-width: 72ch; }
+  .about p:last-child { margin: 0; }
+  .about strong { color: var(--text); background: linear-gradient(transparent 62%, color-mix(in oklab, var(--c1) 35%, transparent) 0); }
+
+  .timeline { position: relative; padding-left: 34px; }
+  .timeline::before { content: ""; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 2px;
+    background: linear-gradient(var(--c1), var(--c2), var(--c3), transparent); border-radius: 2px; }
+  .job { padding: 26px 28px; margin-bottom: 18px; }
+  .job::after { content: ""; position: absolute; left: -31px; top: 34px; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--c2); }
+  .job.current::after { border-color: var(--c4); box-shadow: 0 0 16px var(--c4); }
+  .job-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; flex-wrap: wrap; }
+  .job h3 { font: 600 21px/1.3 "Space Grotesk", sans-serif; margin: 0; }
+  .company { color: var(--accent); font-weight: 600; }
+  .meta { color: var(--muted); font-size: 15px; margin-top: 2px; }
+  .when { font: 500 13px "JetBrains Mono", monospace; color: var(--muted); padding: 5px 11px; border-radius: 999px;
+    background: var(--glass-strong); border: 1px solid var(--border); white-space: nowrap; }
+  .job.current .when { color: var(--c4); border-color: color-mix(in oklab, var(--c4) 40%, transparent); }
+  .job ul, [popover] ul { margin: 14px 0 0; padding: 0; list-style: none; }
+  .job li, [popover] li { position: relative; padding-left: 22px; margin: 7px 0; }
+  .job li::before, [popover] li::before { content: "▹"; position: absolute; left: 0; color: var(--c2); }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .chip { font: 500 13px "JetBrains Mono", monospace; padding: 4px 10px; border-radius: 8px;
+    background: color-mix(in oklab, var(--c1) 14%, transparent); color: var(--text); border: 1px solid color-mix(in oklab, var(--c1) 30%, transparent); }
+
+  .earlier { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  .mini { font: inherit; color: inherit; text-align: left; cursor: pointer; display: block; width: 100%; padding: 20px 22px; border-radius: 18px;
+    background: var(--glass); border: 1px solid var(--border); transition: transform .25s, border-color .25s, box-shadow .25s, opacity .7s; }
+  .mini:hover, .mini:focus-visible { transform: translateY(-4px) rotate(-.4deg); border-color: color-mix(in oklab, var(--c2) 50%, transparent);
+    box-shadow: 0 16px 40px -18px var(--c2); outline: none; }
+  .mini .t { font: 600 17px/1.3 "Space Grotesk", sans-serif; display: block; }
+  .mini .c { color: var(--accent); font-size: 14px; font-weight: 600; display: block; margin-top: 4px; }
+  .mini .d { font: 500 12px "JetBrains Mono", monospace; color: var(--faint); display: block; margin-top: 10px; }
+  .mini .more { font-size: 13px; color: var(--c2); display: block; margin-top: 8px; }
+
+  [popover] { border: 1px solid var(--border); border-radius: 22px; padding: 30px 32px; max-width: min(560px, 92vw);
+    background: color-mix(in oklab, var(--bg2) 92%, transparent); color: var(--text);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.7), 0 0 0 1px color-mix(in oklab, var(--c1) 25%, transparent);
+    opacity: 0; transform: translateY(16px) scale(.96);
+    transition: opacity .3s, transform .35s cubic-bezier(.2,.9,.3,1.3), overlay .35s allow-discrete, display .35s allow-discrete; }
+  [popover]:popover-open { opacity: 1; transform: none; }
+  @starting-style { [popover]:popover-open { opacity: 0; transform: translateY(16px) scale(.96); } }
+  [popover]::backdrop { background: rgba(5,6,12,.55); backdrop-filter: blur(4px); }
+  [popover] h3 { font: 600 24px/1.25 "Space Grotesk", sans-serif; margin: 0 40px 4px 0; }
+  .close { position: absolute; top: 14px; right: 14px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border);
+    background: var(--glass); color: var(--text); cursor: pointer; font-size: 18px; line-height: 1; }
+
+  .bento { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .bento .card { padding: 24px 26px; }
+  .b-a, .b-b { grid-column: span 3; } .b-c, .b-d, .b-e { grid-column: span 2; }
+  .bento h3 { font: 600 18px "Space Grotesk", sans-serif; margin: 0 0 14px; display: flex; gap: 10px; align-items: center; }
+  .ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 17px;
+    background: linear-gradient(135deg, color-mix(in oklab, var(--c1) 40%, transparent), color-mix(in oklab, var(--c2) 30%, transparent)); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .two .card { padding: 26px 28px; }
+  .edu-item { margin-bottom: 18px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-item b { display: block; font-family: "Space Grotesk", sans-serif; font-size: 17px; }
+  .edu-item span { color: var(--muted); font-size: 15px; }
+  .cert { display: flex; gap: 10px; align-items: baseline; margin: 9px 0; }
+  .cert::before { content: "✦"; color: var(--c3); }
+
+  footer { text-align: center; padding: 70px 0 50px; color: var(--faint); font-size: 14px; }
+  footer .big { font: 700 clamp(26px, 4vw, 36px) "Space Grotesk", sans-serif; color: var(--text); margin-bottom: 18px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease, border-color .25s, box-shadow .25s; }
+  .reveal.in { opacity: 1; transform: none; }
+  .mini.reveal.in:hover { transform: translateY(-4px) rotate(-.4deg); }
+
+  @media (max-width: 820px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .bento { grid-template-columns: 1fr; } .bento > * { grid-column: auto !important; }
+    .two { grid-template-columns: 1fr; }
+    nav .hide-sm { display: none; }
+    .about { padding: 24px 22px; } .job { padding: 22px 20px; }
+    .timeline { padding-left: 26px; } .job::after { left: -24px; }
+    header.hero { padding-top: 60px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
   }
   @media print {
-    body { background: #fff; font-size: 12.5px; }
-    .page { margin: 0; border: 0; border-radius: 0; max-width: none; }
-    a { color: inherit; }
+    :root, :root[data-theme] { --bg: #fff; --text: #111; --muted: #444; --glass: #fff; --border: #ddd; --shadow: none; }
+    body { font-size: 12px; }
+    nav, .aurora, .grid-bg, .progress, .cta, .mini .more, .avatar::before { display: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+    .card { backdrop-filter: none; }
+    h1 { background: none; color: #111; -webkit-text-fill-color: #111; }
+    header.hero { padding: 10px 0; }
   }
 </style>
 </head>
 <body>
-<div class="page">
-  <aside>
+<div class="progress" aria-hidden="true"></div>
+<div class="aurora" aria-hidden="true"></div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav aria-label="Sections">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills" class="hide-sm">Skills</a>
+  <a href="#education" class="hide-sm">Education</a>
+  <button id="theme" aria-label="Switch light or dark theme">◐</button>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="avatar" aria-hidden="true">TB</div>
+    <div class="status"><span class="dot"></span> Medford, NJ</div>
     <h1>Thiago Bauer</h1>
-    <p class="role">Location Support Specialist</p>
+    <p class="tagline"><b>Location Support Specialist at H&amp;M.</b><br>I keep sites running and I build <span class="typed" id="typed">Power Apps</span></p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:thiagopbauer@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/thiago-bauer-7aa85223b/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>LinkedIn</a>
+      <a class="btn" href="https://github.com/thiagopanda" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+      <button class="btn" type="button" onclick="print()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg>Save as PDF</button>
+    </div>
+  </header>
 
-    <h2>Contact</h2>
-    <ul class="plain">
-      <li>Medford Lakes, NJ</li>
-      <li><a href="mailto:thiagopbauer@gmail.com">thiagopbauer@gmail.com</a></li>
-      <li><a href="https://www.linkedin.com/in/thiago-bauer-7aa85223b/">LinkedIn</a></li>
-      <li><a href="https://github.com/thiagopanda">GitHub</a></li>
-    </ul>
+  <div class="stats">
+    <div class="card stat reveal"><div class="n" data-count="20" data-suffix="+">20+</div><div class="l">years in tech</div></div>
+    <div class="card stat reveal"><div class="n" data-count="2">2</div><div class="l">countries of sites, US &amp; Canada</div></div>
+    <div class="card stat reveal"><div class="n" data-count="5000" data-suffix="+">5,000+</div><div class="l">feet of CAT6 run</div></div>
+    <div class="card stat reveal"><div class="n" data-count="2">2</div><div class="l">languages, EN &amp; PT</div></div>
+  </div>
 
-    <h2>Experience</h2>
-    <p class="stat">16+ yrs</p>
-    <p style="margin:4px 0 0;color:var(--muted)">in help desk, desktop and field support</p>
+  <section id="about">
+    <p class="eyebrow">// about</p>
+    <h2>Hands-on fixer, practical builder</h2>
+    <div class="card about reveal">
+      <p>I'm a mechatronics-trained IT specialist with <strong>20+ years</strong> of troubleshooting computers, networks and electronics, from ISP help desks in Brazil to warehouse floors across North America.</p>
+      <p>At H&amp;M I <strong>lead site support for the US &amp; Canada warehouses</strong> and build tools inside Microsoft 365, from Power Apps and SharePoint sites to branded HTML guides that let colleagues solve problems on their own.</p>
+      <p>People know me for clear communication, calm escalation, and earning trust with every team, supplier and client I work with.</p>
+    </div>
+  </section>
 
-    <h2>Microsoft 365 &amp; Endpoint</h2>
-    <div class="tags">
-      <span>Microsoft 365</span><span>Intune</span><span>SharePoint</span>
-      <span>Power Apps</span><span>Active Directory</span><span>ServiceNow</span>
+  <section id="experience">
+    <p class="eyebrow">// experience</p>
+    <h2>Where I've made things work</h2>
+    <div class="timeline">
+
+      <article class="card job current reveal">
+        <div class="job-top">
+          <div><h3>Location Support Specialist</h3><div class="meta"><span class="company">H&amp;M</span> · Secaucus, NJ</div></div>
+          <span class="when">Apr 2019 → now</span>
+        </div>
+        <ul>
+          <li>Lead the US &amp; Canada warehouse support team of three technicians, keeping daily operations running at every site.</li>
+          <li>1st and 2nd line support for warehouse staff: RF scanners, Zebra and LaserJet printers, Pick-to-Voice devices.</li>
+          <li>Desk setups, cable patching, laptop imaging, onboarding and equipment moves.</li>
+          <li>Link between H&amp;M Country IT and Central IT, escalating to global teams through ServiceNow.</li>
+          <li>Build internal tools and end-user guides with Power Apps, SharePoint, Intune and Microsoft 365.</li>
+          <li>Manage vendors for on-site hardware and services.</li>
+        </ul>
+        <div class="chips"><span class="chip">M365</span><span class="chip">Power Apps</span><span class="chip">SharePoint</span><span class="chip">Intune</span><span class="chip">ServiceNow</span><span class="chip">Zebra</span></div>
+      </article>
+
+      <article class="card job reveal">
+        <div class="job-top">
+          <div><h3>IT Technician</h3><div class="meta"><span class="company">Mother Seton Regional High School</span> · Clark, NJ</div></div>
+          <span class="when">Jul 2014 → Apr 2019</span>
+        </div>
+        <ul>
+          <li>Ran the school's network and domain: Cisco routers and switches, Windows Server 2008 R2, AD and DNS.</li>
+          <li>Supported staff and students across laptops, tablets, printers, projectors and smartboards.</li>
+          <li>Deployed and terminated more than 5,000 feet of CAT6 cable.</li>
+          <li>Installed digital signage, a firewall, wireless AP controllers and electronic locks.</li>
+        </ul>
+        <div class="chips"><span class="chip">Cisco</span><span class="chip">Active Directory</span><span class="chip">Networking</span></div>
+      </article>
+
+      <article class="card job reveal">
+        <div class="job-top">
+          <div><h3>IT Engineer</h3><div class="meta"><span class="company">Futures Technologies</span> · Scotch Plains, NJ</div></div>
+          <span class="when">Apr 2013 → Jun 2014</span>
+        </div>
+        <ul>
+          <li>Onsite and phone support for corporate offices, schools and small businesses.</li>
+          <li>Site surveys, network assessments and diagrams, cabling and line termination.</li>
+          <li>Installed APs, routers, switches, workstations, VoIP phones and backup systems.</li>
+          <li>Board-level repair of tablets, monitors and laptop screens.</li>
+        </ul>
+      </article>
+
     </div>
 
-    <h2>Systems &amp; Networking</h2>
-    <div class="tags">
-      <span>Windows</span><span>macOS</span><span>Linux</span>
-      <span>DHCP / DNS / TCP-IP</span><span>Cisco switching</span>
-      <span>ESXi / VMs</span><span>Apache / IIS</span><span>NAS</span>
+    <p class="eyebrow" style="margin-top:36px">// earlier roles · tap a card</p>
+    <div class="earlier">
+      <button class="mini reveal" popovertarget="p-sears"><span class="t">Customer Service Associate</span><span class="c">Sears Auto Center</span><span class="d">Oct 2012 – Apr 2013</span><span class="more">See details →</span></button>
+      <button class="mini reveal" popovertarget="p-go2it"><span class="t">IBM Onsite Technician</span><span class="c">Go2IT Group</span><span class="d">Jul 2012</span><span class="more">See details →</span></button>
+      <button class="mini reveal" popovertarget="p-gep"><span class="t">Help Desk Liaison</span><span class="c">GEP Global eProcure</span><span class="d">Jan 2012 – Jun 2012</span><span class="more">See details →</span></button>
+      <button class="mini reveal" popovertarget="p-dctv"><span class="t">IT &amp; Post-Production Intern</span><span class="c">DCTV, New York</span><span class="d">Jan 2011 – Aug 2011</span><span class="more">See details →</span></button>
+      <button class="mini reveal" popovertarget="p-denville"><span class="t">Warehouse Worker</span><span class="c">Denville Scientific</span><span class="d">Jan 2010 – Jul 2011</span><span class="more">See details →</span></button>
+      <button class="mini reveal" popovertarget="p-awj"><span class="t">General Labor &amp; IT</span><span class="c">Active Water Jet</span><span class="d">Oct 2007 – Sep 2012</span><span class="more">See details →</span></button>
+      <button class="mini reveal" popovertarget="p-tap"><span class="t">Warehouse Operator</span><span class="c">TAP Maintenance &amp; Engineering</span><span class="d">Aug 2004 – Aug 2006</span><span class="more">See details →</span></button>
+      <button class="mini reveal" popovertarget="p-atento"><span class="t">Help Desk Support</span><span class="c">Atento Brasil</span><span class="d">Apr 2002 – Jul 2004</span><span class="more">See details →</span></button>
     </div>
+  </section>
 
-    <h2>Hardware</h2>
-    <div class="tags">
-      <span>RF scanners</span><span>Zebra printers</span><span>Pick-to-Voice</span>
-      <span>Laptop imaging</span><span>Board-level repair</span><span>CAT6 cabling</span>
+  <div popover id="p-sears"><button class="close" popovertarget="p-sears" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>Customer Service Associate</h3><div class="meta"><span class="company">Sears Auto Center</span> · Watchung, NJ · Oct 2012 – Apr 2013</div>
+    <ul><li>Guided customers by phone and in store on auto maintenance and tires.</li><li>Stayed productive in a fast-paced shop.</li><li>Grew sales steadily in a tough economy.</li></ul></div>
+
+  <div popover id="p-go2it"><button class="close" popovertarget="p-go2it" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>IBM Onsite Technician</h3><div class="meta"><span class="company">Go2IT Group</span> · Little Falls, NJ · Jul 2012</div>
+    <ul><li>Desktop and help desk support for a Morgan Stanley Smith Barney account conversion project.</li><li>Fixed Windows 7, Outlook, printer and folder mapping, ThomsonOne and Citrix issues.</li><li>Supported users at every level of the local branch.</li></ul></div>
+
+  <div popover id="p-gep"><button class="close" popovertarget="p-gep" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>Help Desk Liaison</h3><div class="meta"><span class="company">GEP Global eProcure</span> · Clark, NJ · Jan 2012 – Jun 2012</div>
+    <ul><li>Helped external suppliers use the in-house supply chain platform.</li><li>Tested and administered GEP Suite 5.0.</li><li>Imaged laptops and ran diagnostics with the IT infrastructure team (LANDesk, WebEx, Office).</li><li>Translated documents and code into Portuguese and supported clients in Brazil.</li></ul></div>
+
+  <div popover id="p-dctv"><button class="close" popovertarget="p-dctv" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>IT &amp; Post-Production Intern</h3><div class="meta"><span class="company">DCTV</span> · New York, NY · Jan 2011 – Aug 2011</div>
+    <ul><li>Desktop support in a Mac-only shop: OS X troubleshooting, file transfers, DiskWarrior, Little Snitch, RAW data management.</li><li>Installs, moves and changes for computers and peripherals.</li><li>Worked with the post-production director on Final Cut Pro editing, lighting, sound and interview technique.</li></ul></div>
+
+  <div popover id="p-denville"><button class="close" popovertarget="p-denville" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>Warehouse Worker</h3><div class="meta"><span class="company">Denville Scientific</span> · South Plainfield, NJ · Jan 2010 – Jul 2011</div>
+    <ul><li>Picking, packing, inventory, labeling and stocking of lab equipment.</li><li>Diagnosed and fixed a failed thermal printer on the spot, saving a full day of warehouse output.</li></ul></div>
+
+  <div popover id="p-awj"><button class="close" popovertarget="p-awj" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>General Labor &amp; IT</h3><div class="meta"><span class="company">Active Water Jet</span> · Cranford, NJ · Oct 2007 – Sep 2012</div>
+    <ul><li>Industrial high-pressure water blasting, vacuuming and confined space entries.</li><li>Installed, upgraded and maintained the company's desktops and network.</li><li>Built and maintained the company website.</li></ul></div>
+
+  <div popover id="p-tap"><button class="close" popovertarget="p-tap" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>Warehouse Operator</h3><div class="meta"><span class="company">TAP Maintenance &amp; Engineering</span> · Porto Alegre, Brazil · Aug 2004 – Aug 2006</div>
+    <ul><li>Controlled shipments of aircraft parts, physically and in SAP.</li><li>Took part in the annual inventory of all warehouses.</li><li>English interpreter for the IAI and VEM production teams.</li></ul></div>
+
+  <div popover id="p-atento"><button class="close" popovertarget="p-atento" popovertargetaction="hide" aria-label="Close">×</button>
+    <h3>Help Desk Support</h3><div class="meta"><span class="company">Atento Brasil S.A.</span> · Porto Alegre, Brazil · Apr 2002 – Jul 2004</div>
+    <ul><li>Phone, email and chat support for Terra Lycos ISP customers.</li><li>Fixed live connectivity issues across Windows, OS X and Linux: TCP/IP, DNS, FTP, email clients, dial-up and cable modems.</li></ul></div>
+
+  <section id="skills">
+    <p class="eyebrow">// toolkit</p>
+    <h2>What I work with</h2>
+    <div class="bento">
+      <div class="card b-a reveal"><h3><span class="ico">☁</span>Microsoft 365 &amp; endpoint</h3>
+        <div class="chips"><span class="chip">Microsoft 365</span><span class="chip">Intune</span><span class="chip">SharePoint</span><span class="chip">Power Apps</span><span class="chip">Active Directory</span><span class="chip">ServiceNow</span><span class="chip">Citrix</span></div></div>
+      <div class="card b-b reveal"><h3><span class="ico">⌁</span>Systems &amp; networking</h3>
+        <div class="chips"><span class="chip">Windows</span><span class="chip">macOS</span><span class="chip">Linux</span><span class="chip">DHCP · DNS · TCP/IP</span><span class="chip">Cisco</span><span class="chip">ESXi / VMs</span><span class="chip">Apache · IIS</span><span class="chip">NAS</span><span class="chip">Wireshark</span></div></div>
+      <div class="card b-c reveal"><h3><span class="ico">⚙</span>Hardware</h3>
+        <div class="chips"><span class="chip">RF scanners</span><span class="chip">Zebra printers</span><span class="chip">Pick-to-Voice</span><span class="chip">Imaging</span><span class="chip">Board-level repair</span><span class="chip">CAT6</span></div></div>
+      <div class="card b-d reveal"><h3><span class="ico">⌘</span>Tools</h3>
+        <div class="chips"><span class="chip">HTML · CSS</span><span class="chip">Command line</span><span class="chip">Acronis · Ghost</span><span class="chip">RDP · VNC · LogMeIn</span><span class="chip">3CX</span><span class="chip">SAP</span></div></div>
+      <div class="card b-e reveal"><h3><span class="ico">✶</span>Creative &amp; maker</h3>
+        <div class="chips"><span class="chip">Photoshop</span><span class="chip">Final Cut Pro</span><span class="chip">Raspberry Pi</span><span class="chip">Flipper Zero</span></div></div>
     </div>
+  </section>
 
-    <h2>Tools</h2>
-    <div class="tags">
-      <span>HTML / CSS</span><span>Command line</span><span>Acronis / Ghost</span>
-      <span>VNC / LogMeIn</span><span>Photoshop</span><span>Final Cut Pro</span>
+  <section id="education">
+    <p class="eyebrow">// learning</p>
+    <h2>Education &amp; certifications</h2>
+    <div class="two">
+      <div class="card reveal">
+        <div class="edu-item"><b>Computer Networks, Associate coursework</b><span>ULBRA, Brazilian Lutheran University · 2004 – 2006</span></div>
+        <div class="edu-item"><b>Industrial Automation, Technical Diploma</b><span>José Cesar de Mesquita Vocational School · Porto Alegre · 2001 – 2002</span></div>
+        <div class="edu-item"><b>Languages</b><span>English and Portuguese, fluent</span></div>
+      </div>
+      <div class="card reveal">
+        <div class="cert">KCS v6 Fundamentals</div>
+        <div class="cert">OSHA 40-hr HAZWOPER</div>
+        <div class="cert">Black Seal Boiler Operator</div>
+        <div class="cert">Scissor Lift Operator</div>
+        <div class="cert">DCTV: Camera, Lighting &amp; Sound · Interview Techniques · Final Cut Pro</div>
+      </div>
     </div>
+  </section>
 
-    <h2>Languages</h2>
-    <ul class="plain"><li>English, Portuguese</li></ul>
-
-    <h2>Certifications</h2>
-    <ul class="plain">
-      <li>KCS v6 Fundamentals</li>
-      <li>OSHA 40-hr HAZWOPER</li>
-      <li>Black Seal Boiler Operator</li>
-      <li>Scissor Lift Operator</li>
-    </ul>
-  </aside>
-
-  <main>
-    <h2>About</h2>
-    <p>IT support specialist with a mechatronics background and 16+ years troubleshooting computers, networks and electronics. I lead hands-on site support for H&amp;M's US and Canada warehouses, and I build practical tools inside Microsoft 365, from Power Apps and SharePoint sites to branded HTML guides that help colleagues solve problems on their own. Known for clear communication, calm escalation and building trust with every team I support.</p>
-
-    <h2>Experience</h2>
-
-    <div class="job">
-      <div class="job-head"><h3>Location Support Specialist</h3><span class="when">Apr 2019 – Present</span></div>
-      <div class="where">H&amp;M Hennes &amp; Mauritz · Secaucus, NJ</div>
-      <ul>
-        <li>Lead the US &amp; Canada warehouse support team of three technicians, keeping daily operations running at every site.</li>
-        <li>Provide 1st and 2nd line support for warehouse staff, focused on RF scanners, Zebra and LaserJet printers, and Pick-to-Voice devices.</li>
-        <li>Handle desk setups, cable patching, laptop imaging, onboarding and equipment moves.</li>
-        <li>Act as the link between H&amp;M Country IT and Central IT, escalating to global teams through ServiceNow.</li>
-        <li>Build internal tooling and end-user documentation with Microsoft 365, Power Apps, SharePoint and Intune.</li>
-        <li>Manage vendors for on-site hardware and services.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="job-head"><h3>IT Technician</h3><span class="when">Jul 2014 – Apr 2019</span></div>
-      <div class="where">Mother Seton Regional High School · Clark, NJ</div>
-      <ul>
-        <li>Maintained Cisco routers and switches and a Windows Server 2008 R2 domain (AD, DNS).</li>
-        <li>Supported administration, teachers, guidance staff and students across laptops, tablets, printers, projectors and smartboards.</li>
-        <li>Deployed and terminated more than 5,000 feet of CAT6 cable.</li>
-        <li>Installed and managed digital signage, a firewall solution, wireless AP controllers and electronic locks.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="job-head"><h3>IT Engineer</h3><span class="when">Apr 2013 – Jun 2014</span></div>
-      <div class="where">Futures Technologies · Scotch Plains, NJ</div>
-      <ul>
-        <li>Onsite and phone support for corporate offices, schools and small businesses.</li>
-        <li>Ran site surveys, network assessments and diagrams, cabling and line termination.</li>
-        <li>Installed access points, routers, switches, workstations, VoIP phones and backup solutions; did board-level tablet, monitor and laptop repair.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="job-head"><h3>IBM Onsite Technician</h3><span class="when">Jul 2012</span></div>
-      <div class="where">Go2IT Group · Little Falls, NJ</div>
-      <ul>
-        <li>Supported a Morgan Stanley branch office through an account conversion and migration project (Windows 7, Outlook, Citrix).</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="job-head"><h3>Help Desk Liaison</h3><span class="when">Jan 2012 – Jun 2012</span></div>
-      <div class="where">GEP Global eProcure · Clark, NJ</div>
-      <ul>
-        <li>Helped external suppliers use the in-house supply chain platform; tested and debugged GEP Suite 5.0.</li>
-        <li>Provided Portuguese-language help desk support for clients in Brazil and translated documents and code.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="job-head"><h3>Help Desk Support</h3><span class="when">Apr 2002 – Jul 2004</span></div>
-      <div class="where">Atento Brasil S.A. · Porto Alegre, Brazil</div>
-      <ul>
-        <li>Phone, email and chat support for Terra Lycos ISP customers: Windows, macOS, Linux, email clients, TCP/IP, DNS, dial-up and cable modems.</li>
-      </ul>
-    </div>
-
-    <h2>Education</h2>
-    <div class="edu">
-      <p><strong>Computer Networks (Associate coursework)</strong><br><small>ULBRA, Brazilian Lutheran University · Porto Alegre, 2004 – 2006</small></p>
-      <p><strong>Industrial Automation, Technical Diploma</strong><br><small>José Cesar de Mesquita Vocational School · Porto Alegre, 2001 – 2002</small></p>
-    </div>
-  </main>
+  <footer>
+    <div class="big">Let's make something work.</div>
+    <div class="cta" style="margin:0 0 30px"><a class="btn primary" href="mailto:thiagopbauer@gmail.com">thiagopbauer@gmail.com</a></div>
+    © <span id="yr">2026</span> Thiago Bauer · Medford, NJ
+  </footer>
 </div>
+
+<script>
+  const root = document.documentElement, tbtn = document.getElementById('theme');
+  try { const s = localStorage.getItem('theme'); if (s) root.dataset.theme = s; else if (matchMedia('(prefers-color-scheme: light)').matches) root.dataset.theme = 'light'; } catch (e) {}
+  tbtn.addEventListener('click', () => {
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    const apply = () => { root.dataset.theme = next; try { localStorage.setItem('theme', next); } catch (e) {} };
+    document.startViewTransition ? document.startViewTransition(apply) : apply();
+  });
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const words = ['Power Apps', 'SharePoint sites', 'HTML guides', 'networks', 'happy users'];
+  const el = document.getElementById('typed');
+  if (!reduce) {
+    let w = 0, i = words[0].length, del = true;
+    setTimeout(function tick() {
+      const word = words[w];
+      i += del ? -1 : 1; el.textContent = word.slice(0, i);
+      let wait = del ? 45 : 85;
+      if (!del && i === word.length) { del = true; wait = 1800; }
+      else if (del && i === 0) { del = false; w = (w + 1) % words.length; wait = 300; }
+      setTimeout(tick, wait);
+    }, 1800);
+  }
+
+  function count(n) {
+    const end = +n.dataset.count, suf = n.dataset.suffix || '';
+    if (reduce) { n.textContent = end.toLocaleString() + suf; return; }
+    const t0 = performance.now(), d = 1400;
+    (function step(t) { const p = Math.min(1, (t - t0) / d), v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+      n.textContent = v.toLocaleString() + suf; if (p < 1) requestAnimationFrame(step); })(t0);
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in'); io.unobserve(e.target);
+      const n = e.target.querySelector('[data-count]'); if (n) count(n);
+    }), { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach((r, k) => { r.style.transitionDelay = (k % 4) * 70 + 'ms'; io.observe(r); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(r => r.classList.add('in'));
+  }
+
+  document.querySelectorAll('.card').forEach(c => c.addEventListener('pointermove', e => {
+    const r = c.getBoundingClientRect(); c.style.setProperty('--mx', e.clientX - r.left + 'px'); c.style.setProperty('--my', e.clientY - r.top + 'px');
+  }));
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
