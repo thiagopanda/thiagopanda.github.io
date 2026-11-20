@@ -230,7 +230,7 @@
     <h1>Thiago Bauer</h1>
     <p class="tagline"><b>Location Support Specialist at H&amp;M.</b><br>I keep sites running and I build <span class="typed" id="typed">Power Apps</span></p>
     <div class="cta">
-      <a class="btn primary" href="mailto:thiagopbauer@gmail.com">
+      <a class="btn primary" href="mailto:resume@tpbauer.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email me</a>
       <a class="btn" href="https://www.linkedin.com/in/thiago-bauer-7aa85223b/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.03-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>LinkedIn</a>
@@ -253,7 +253,7 @@
     <h2>Hands-on fixer, practical builder</h2>
     <div class="card about reveal">
       <p>I'm a mechatronics-trained IT specialist with <strong>20+ years</strong> of troubleshooting computers, networks and electronics, from ISP help desks in Brazil to warehouse floors across North America.</p>
-      <p>At H&amp;M I <strong>lead site support for the US &amp; Canada warehouses</strong> and build tools inside Microsoft 365, from Power Apps and SharePoint sites to branded HTML guides that let colleagues solve problems on their own.</p>
+      <p>At H&amp;M I <strong>support colleagues across the US and globally</strong>, and build tools and resources inside Microsoft 365, from Power Apps and SharePoint sites to branded HTML guides that let colleagues solve problems on their own and support their workflow.</p>
       <p>People know me for clear communication, calm escalation, and earning trust with every team, supplier and client I work with.</p>
     </div>
   </section>
@@ -366,7 +366,7 @@
       <div class="card b-d reveal"><h3><span class="ico">⌘</span>Tools</h3>
         <div class="chips"><span class="chip">HTML · CSS</span><span class="chip">Command line</span><span class="chip">Acronis · Ghost</span><span class="chip">RDP · VNC · LogMeIn</span><span class="chip">3CX</span><span class="chip">SAP</span></div></div>
       <div class="card b-e reveal"><h3><span class="ico">✶</span>Creative &amp; maker</h3>
-        <div class="chips"><span class="chip">Photoshop</span><span class="chip">Final Cut Pro</span><span class="chip">Raspberry Pi</span><span class="chip">Flipper Zero</span></div></div>
+        <div class="chips"><span class="chip">Photoshop</span><span class="chip">Final Cut Pro</span><span class="chip">Soldering</span><span class="chip">Hacking</span><span class="chip">Tinkering</span><span class="chip">Lock picking</span><span class="chip">Raspberry Pi</span><span class="chip">Flipper Zero</span></div></div>
     </div>
   </section>
 
@@ -390,8 +390,8 @@
   </section>
 
   <footer>
-    <div class="big">Let's make something work.</div>
-    <div class="cta" style="margin:0 0 30px"><a class="btn primary" href="mailto:thiagopbauer@gmail.com">thiagopbauer@gmail.com</a></div>
+    <div class="big"><span class="typed" id="typed2">Let's make something work.</span></div>
+    <div class="cta" style="margin:0 0 30px"><a class="btn primary" href="mailto:resume@tpbauer.com">resume@tpbauer.com</a></div>
     © <span id="yr">2026</span> Thiago Bauer · Medford, NJ
   </footer>
 </div>
@@ -419,6 +419,26 @@
       else if (del && i === 0) { del = false; w = (w + 1) % words.length; wait = 300; }
       setTimeout(tick, wait);
     }, 1800);
+  }
+
+  const el2 = document.getElementById('typed2');
+  if (!reduce) {
+    const lines = ["Let's make something work.", "Thanks for stopping by!"];
+    let started = false;
+    const go = () => {
+      let w = 0, i = lines[0].length, del = true;
+      setTimeout(function tick() {
+        const line = lines[w];
+        i += del ? -1 : 1; el2.textContent = line.slice(0, i);
+        let wait = del ? 40 : 80;
+        if (!del && i === line.length) { del = true; wait = 2600; }
+        else if (del && i === 0) { del = false; w = (w + 1) % lines.length; wait = 350; }
+        setTimeout(tick, wait);
+      }, 2200);
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es, o) => { if (es[0].isIntersecting && !started) { started = true; o.disconnect(); go(); } }).observe(el2);
+    } else go();
   }
 
   function count(n) {
